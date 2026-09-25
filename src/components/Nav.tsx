@@ -5,11 +5,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/shows', label: 'Shows' },
   { href: '/gallery', label: 'Gallery' },
-  { href: '/contact', label: 'Contact' },
 ];
 
 const socials = [
@@ -50,39 +48,28 @@ export default function Nav() {
   return (
     <header>
       <nav>
-        <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          <Image
-            src="/psf_logo.png"
-            alt="Philstagers Foundation logo"
-            width={40}
-            height={40}
-            className="brand-logo"
-            priority
-          />
-          <span className="brand-name">
-            Philstagers <span className="accent">Foundation</span>
-          </span>
-        </Link>
-
-        <button
-          type="button"
-          className={`nav-toggle${open ? ' open' : ''}`}
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-
         <div className={`navlinks${open ? ' open' : ''}`}>
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <Link key={link.href} href={link.href} className="nav-link" onClick={() => setOpen(false)}>
               {link.label}
             </Link>
           ))}
-          <div className="nav-socials">
+          <div className="nav-icons">
+            <Link
+              href="/"
+              className="nav-logo"
+              aria-label="Philstagers Foundation — home"
+              onClick={() => setOpen(false)}
+            >
+              <Image
+                src="/psf_logo.png"
+                alt="Philstagers Foundation logo"
+                width={40}
+                height={40}
+                className="brand-logo"
+                priority
+              />
+            </Link>
             {socials.map((social) => (
               <a
                 key={social.name}
@@ -90,11 +77,29 @@ export default function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
+                className="social-link"
               >
                 {social.icon}
               </a>
             ))}
           </div>
+        </div>
+
+        <div className="nav-actions">
+          <Link href="/contact" className="cta nav-contact" onClick={() => setOpen(false)}>
+            Contact
+          </Link>
+          <button
+            type="button"
+            className={`nav-toggle${open ? ' open' : ''}`}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </nav>
     </header>

@@ -1,4 +1,5 @@
 import ShowCard from '../../../components/ShowCard';
+import Reveal from '../../../components/Reveal';
 import { shows, type Show } from '../../../data/shows';
 
 export const metadata = { title: 'Shows — Philippine Stagers Foundation' };
@@ -6,14 +7,14 @@ export const metadata = { title: 'Shows — Philippine Stagers Foundation' };
 function Group({ title, shows, scroll }: { title: string; shows: Show[]; scroll?: boolean }) {
   if (shows.length === 0) return null;
   return (
-    <div style={{ marginBottom: 48 }}>
-      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', marginBottom: 20 }}>
-        {title}
-      </h3>
-      <div className={scroll ? 'show-row' : 'prod-grid'}>
-        {shows.map((show) => <ShowCard key={show.id} show={show} />)}
+    <Reveal>
+      <div className="show-group">
+        <h3 className="group-title">{title}</h3>
+        <div className={scroll ? 'show-row' : 'prod-grid'}>
+          {shows.map((show) => <ShowCard key={show.id} show={show} />)}
+        </div>
       </div>
-    </div>
+    </Reveal>
   );
 }
 

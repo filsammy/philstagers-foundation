@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import ShowCard from '../../components/ShowCard';
+import Reveal from '../../components/Reveal';
+import StatCounter from '../../components/StatCounter';
+import HeroSpotlight from '../../components/HeroSpotlight';
+import Gallery from '../../components/Gallery';
 import { shows } from '../../data/shows';
 import { galleryItems } from '../../data/media';
 
@@ -23,6 +27,7 @@ export default function HomePage() {
             <source src="/video/hero.mp4" type="video/mp4" />
           </video>
         </div>
+        <HeroSpotlight />
         <div className="hero-content">
           <div className="kicker">Philippine Stagers Foundation</div>
           <h1>Empowering the Youth through Original Filipino Theatre</h1>
@@ -38,28 +43,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="featured-shows">
-        <div className="section-label">Featured Show</div>
-        <div className="section-heading">
-          <h2>What&apos;s On Stage Right Now</h2>
-          <Link href="/shows" className="cta ghost">See All Productions</Link>
-        </div>
-        {featured.length > 0 ? (
-          <div className="prod-grid">
-            {featured.map((show) => <ShowCard key={show.id} show={show} />)}
+      <Reveal>
+        <section className="featured-shows">
+          <div className="section-label">Featured Show</div>
+          <div className="section-heading">
+            <h2>What&apos;s On Stage Right Now</h2>
+            <Link href="/shows" className="cta ghost">See All Productions</Link>
           </div>
-        ) : (
-          <p className="empty-state">
-            No active tour dates right now — check out our full list of <Link href="/shows">past & upcoming productions</Link>.
-          </p>
-        )}
-      </section>
+          {featured.length > 0 ? (
+            <div className="prod-grid">
+              {featured.map((show) => <ShowCard key={show.id} show={show} />)}
+            </div>
+          ) : (
+            <p className="empty-state">
+              No active tour dates right now — check out our full list of <Link href="/shows">past & upcoming productions</Link>.
+            </p>
+          )}
+        </section>
+      </Reveal>
 
       <section className="stat-strip">
         <div className="stats">
           {stats.map((stat) => (
             <div className="stat" key={stat.label}>
-              <div className="stat-value">{stat.value}</div>
+              <div className="stat-value"><StatCounter value={stat.value} /></div>
               <div className="stat-label">{stat.label}</div>
             </div>
           ))}
@@ -90,19 +97,7 @@ export default function HomePage() {
         <h2>Moments from the stage.</h2>
         {galleryPreview.length > 0 ? (
           <>
-            <div className="gallery-grid">
-              {galleryPreview.map((item, i) => (
-                <figure className="gallery-item" key={i}>
-                  {item.type === 'image' ? (
-                    <div className="frame">
-                      <Image src={item.src} alt={item.caption ?? ''} fill />
-                    </div>
-                  ) : (
-                    <video src={item.src} poster={item.poster} muted />
-                  )}
-                </figure>
-              ))}
-            </div>
+            <Gallery items={galleryPreview} />
             <Link href="/gallery" className="cta ghost more-link">View Full Gallery</Link>
           </>
         ) : (
