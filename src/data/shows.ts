@@ -26,7 +26,7 @@ export const shows: Show[] = [
     id: 'san-vicente',
     title: 'San Vicente: Isang Sarswela',
     poster: '/shows/san-vicente.jpg',
-    dates: 'Now Touring · Nationwide',
+    dates: 'Now Showing · Adamson University',
     credits: 'Written & directed by Atty. Vince Tañada · Music by Christian H. Lim',
     description:
       'Centered around the inspiring life, faith, and deeds of San Vicente de Paul, the patron saint of charitable societies and defender of the poor. The play balances its sacred subject matter with jokes, lighthearted comedic banter, and lively musical numbers, keeping audiences entertained throughout.',

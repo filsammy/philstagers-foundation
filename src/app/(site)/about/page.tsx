@@ -99,14 +99,6 @@ export default function AboutPage() {
           <h2>Why we do this work.</h2>
           <div className="mv-grid">
             <div>
-              <h3>Vision</h3>
-              <p>
-                To serve as a major catalyst for transformation, cultural preservation, and social
-                awakening in the Philippines through accessible, world-class theatrical art, while
-                nurturing a nation of socially aware, history-conscious, and art-loving audiences.
-              </p>
-            </div>
-            <div>
               <h3>Mission</h3>
               <ul className="mission-list">
                 {missions.map((item) => (
@@ -115,6 +107,14 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div>
+              <h3>Vision</h3>
+              <p>
+                To serve as a major catalyst for transformation, cultural preservation, and social
+                awakening in the Philippines through accessible, world-class theatrical art, while
+                nurturing a nation of socially aware, history-conscious, and art-loving audiences.
+              </p>
             </div>
           </div>
         </section>

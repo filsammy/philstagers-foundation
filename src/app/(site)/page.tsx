@@ -17,7 +17,7 @@ const stats = [
 
 export default function HomePage() {
   const featured = shows.filter((show) => show.status === 'current');
-  const galleryPreview = galleryItems.slice(0, 6);
+  const galleryPreview = galleryItems.slice(0, 10);
 
   return (
     <>
